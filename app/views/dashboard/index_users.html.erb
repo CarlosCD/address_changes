@@ -1,0 +1,15 @@
+<h1>List of Users</h1>
+<table class="table">
+  <thead><tr>
+    <th>Email</th>
+    <th>Last Log In</th>
+    <th>Times Logged In</th>
+  </tr></thead>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <td><%= user.updated_at %></td>
+      <td><%= user.sign_in_count %></td>
+    </tr>
+  <% end %>
+</table>

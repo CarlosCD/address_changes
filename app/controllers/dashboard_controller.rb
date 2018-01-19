@@ -25,4 +25,8 @@ class DashboardController < ApplicationController
     redirect_to :back
   end
 
+  def index_users
+    @users = User.order(:email)
+  end
+
 end
