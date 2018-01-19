@@ -1,0 +1,8 @@
+<h1>Devices</h1>
+<% if @devices && @devices.any? %>
+  <% @devices.each do |device| %>
+    serial_number: <%= device.serial_number %>, Registration: <%= device.created_at %>, Firmware version: <%= device.firmware %><br>
+  <% end %>
+<% else %>
+  No devices registered
+<% end %>
