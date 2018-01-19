@@ -3,7 +3,7 @@ Devices and Sensors Exercise
 
 Rails application.
 
-Ruby 2.4.1
+Ruby 2.4.0
 
 Some seed data has been added (see `db/seeds.rb`)
 
@@ -25,6 +25,14 @@ A device with its data (dashboard too):
 API from the command line (on the development environment):
 
 ![API from CURL](https://raw.githubusercontent.com/CarlosCD/exer-sensors/master/doc/api_access_from_curl.png)
+
+Users index in the dashboard:
+
+![Devices](https://raw.githubusercontent.com/CarlosCD/exer-sensors/master/doc/users_index.png)
+
+Log in to the dashboard:
+
+![Devices](https://raw.githubusercontent.com/CarlosCD/exer-sensors/master/doc/log_in.png)
 
 
 
