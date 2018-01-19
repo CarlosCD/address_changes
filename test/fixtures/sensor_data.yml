@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  temperature: 999.99
+  air_humidity: 999.99
+  co_level: 0
+  device_health: MyString
+  device_id: 
+
+two:
+  temperature: 999.99
+  air_humidity: 999.99
+  co_level: 1
+  device_health: MyString
+  device_id: 
