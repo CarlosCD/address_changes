@@ -6,7 +6,7 @@ class DashboardController < ApplicationController
 
   def show_device
     @device = params[:serial].present? ? Device.find_by(params[:serial_number]) : Device.find(params[:id])
-    @todays_data = @device.sensor_data.order(created_at: :asc)
+    @todays_data = @device.sensor_data.order(created_at: :desc)
     if params[:time_frame].present?
       case params[:time_frame].downcase.to_sym
       when :today      then @todays_data = @todays_data.where('created_at >= ?', Time.now.beginning_of_day)
