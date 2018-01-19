@@ -36,7 +36,7 @@
           <td><%= data.air_humidity %>%</td>
           <td><%= data.co_level %> PPM</td>
           <td><%= data.created_at.strftime('%m/%d/%Y %H:%M') %></td>
-          <td><%= 'Yes' if data.co_alert %></td>
+          <td><%= link_to('Hide Alert', remove_alert_path(data.id)) if data.co_alert %></td>
         </tr>
       <% end %>
     </table>

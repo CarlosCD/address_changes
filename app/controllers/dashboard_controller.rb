@@ -17,4 +17,10 @@ class DashboardController < ApplicationController
     end
   end
 
+  def remove_alert
+    sensor_data = SensorDatum.find(params[:data_id])
+    sensor_data.update_columns(co_alert: false)
+    redirect_to :back
+  end
+
 end
