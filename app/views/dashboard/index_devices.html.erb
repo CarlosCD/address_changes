@@ -1,7 +1,14 @@
-<h1>Devices</h1>
+<h1>List of Devices</h1>
 <% if @devices && @devices.any? %>
   <% @devices.each do |device| %>
-    serial_number: <%= device.serial_number %>, Registration: <%= device.created_at %>, Firmware version: <%= device.firmware %><br>
+    <% has_co_alert = device.sensor_data.where(co_alert: true).any? %>
+    <%= link_to dashboard_device_path(device.id) do %>
+      serial_number: <%= device.serial_number %>,
+      Registration: <%= device.created_at %>,
+      Firmware version: <%= device.firmware %>
+      <%='[CO Alert!]' if has_co_alert %>
+    <% end %>
+    <br>
   <% end %>
 <% else %>
   No devices registered

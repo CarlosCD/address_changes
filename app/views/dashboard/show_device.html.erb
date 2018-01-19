@@ -1,0 +1,26 @@
+<h1>Device</h1>
+<% if @device %>
+  Serial_number: <%= @device.serial_number %><br>
+  Registration: <%= @device.created_at %><br>
+  Firmware version: <%= @device.firmware %><br>
+  <%= link_to 'Back to the list of Devices', :root %>
+  <% if @todays_data.any? %>
+    <br>
+    Sensor data:<br>
+    <br>
+    <% this_path = request.path + '?time_frame=' %>
+    Filter by:
+    <%=link_to 'Today', this_path + 'today' %>,
+    <%=link_to 'This Week', this_path + 'This_Week' %>,
+    <%=link_to 'This Month', this_path + 'This_Month' %>,
+    <%=link_to 'This Year', this_path + 'This_Year' %>,
+    <br>
+    Temperature, Air Humidity, CO Level, Time, CO Alert?<br>
+    <br>
+    <% @todays_data.each do |data| %>
+      <%= data.temperature %>°C, <%= data.air_humidity %>%, <%= data.co_level %> PPM, <%= data.created_at.strftime('%m/%d/%Y %H:%M') %>, <%= 'Yes' if data.co_alert %><br>
+    <% end %>
+  <% end %>
+<% else %>
+  No device given
+<% end %>
