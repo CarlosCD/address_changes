@@ -44,7 +44,8 @@ class ApiController < ApplicationController
         end
       end
       if num_added > 0
-        render json: {message: "Added #{num_added} sensor data points for device #{device.serial_number}"}, status: :ok
+        render json: {message: "Added #{ActionController::Base.helpers.pluralize(num_added, 'sensor data point')} for device #{device.serial_number}"},
+               status: :ok
       else
         render json: {message: 'Not valid data received'}, status: 422
       end
