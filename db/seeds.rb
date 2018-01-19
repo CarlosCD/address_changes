@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 # Some seed data to demo the application's dashboard
 #
 # Run rake db:seed to add it to the database (or create it alongside the db with rake db:setup).
@@ -13,3 +15,14 @@ Device.all.each do |d|
                                       device_health: ['unknown', 'good', 'ok'].sample )
   end
 end
+
+# Test users.
+# Notes:
+#  - Password minimum length is 8 charactes (see config/initializers/devise.rb)
+#  - Do not use in production, and use better passwords :)
+
+User.create(email: 'ccarrodupla@gmail.com',   password: 'password')
+User.create(email: 'lucas@citrusbyte.com',    password: 'password')
+User.create(email: 'federico@citrusbyte.com', password: 'password')
+User.create(email: 'lautaro@citrusbyte.com',  password: 'password')
+User.create(email: 'test@example.com',        password: 'password')
