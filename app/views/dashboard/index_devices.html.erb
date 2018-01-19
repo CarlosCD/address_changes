@@ -1,15 +1,21 @@
 <h1>List of Devices</h1>
+Devices in red have data with CO levels of over 9 PPM.
 <% if @devices && @devices.any? %>
-  <% @devices.each do |device| %>
-    <% has_co_alert = device.sensor_data.where(co_alert: true).any? %>
-    <%= link_to dashboard_device_path(device.id) do %>
-      serial_number: <%= device.serial_number %>,
-      Registration: <%= device.created_at %>,
-      Firmware version: <%= device.firmware %>
-      <%='[CO Alert!]' if has_co_alert %>
+  <table class="table">
+    <thead><tr>
+      <th>Serial Number</th>
+      <th>Registration</th>
+      <th>Firmware Version</th>
+    </tr></thead>
+    <% @devices.each do |device| %>
+      <% has_co_alert = device.sensor_data.where(co_alert: true).any? %>
+      <tr class=<%= 'danger' if has_co_alert%>>
+        <td><%= link_to device.serial_number, dashboard_device_path(device.id) %></td>
+        <td><%= device.created_at %></td>
+        <td><%= device.firmware %></td>
+      </tr>
     <% end %>
-    <br>
-  <% end %>
+  </table>
 <% else %>
   No devices registered
 <% end %>

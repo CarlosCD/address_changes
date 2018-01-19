@@ -1,26 +1,50 @@
 <h1>Device</h1>
 <% if @device %>
-  Serial_number: <%= @device.serial_number %><br>
-  Registration: <%= @device.created_at %><br>
-  Firmware version: <%= @device.firmware %><br>
-  <%= link_to 'Back to the list of Devices', :root %>
+  <table class="table">
+    <tr><td><strong>Serial_number</strong></td>   <td><%= @device.serial_number %></td></tr>
+    <tr><td><strong>Firmware version</strong></td><td><%= @device.firmware %></td></tr>
+    <tr><td><strong>Registration</strong></td>    <td><%= @device.created_at.strftime('%m/%d/%Y %H:%M') %></td></tr>
+  </table>
+  <h2>Sensor data</h2>
+  <% this_path = request.path + '?time_frame=' %>
+  <div class="btn-group">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= params[:time_frame].present? ? params[:time_frame].split('_').join(' ').titleize : 'All' %> <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a href="<%= this_path %>">All</a></li>
+      <li><a href="<%= this_path + 'today' %>">Today</a></li>
+      <li><a href="<%= this_path + 'this_week' %>">This Week</a></li>
+      <li><a href="<%= this_path + 'this_month' %>">This Month</a></li>
+      <li><a href="<%= this_path + 'this_year' %>">This Year</a></li>
+    </ul>
+  </div>
+  <br>
   <% if @todays_data.any? %>
-    <br>
-    Sensor data:<br>
-    <br>
-    <% this_path = request.path + '?time_frame=' %>
-    Filter by:
-    <%=link_to 'Today', this_path + 'today' %>,
-    <%=link_to 'This Week', this_path + 'This_Week' %>,
-    <%=link_to 'This Month', this_path + 'This_Month' %>,
-    <%=link_to 'This Year', this_path + 'This_Year' %>,
-    <br>
-    Temperature, Air Humidity, CO Level, Time, CO Alert?<br>
-    <br>
-    <% @todays_data.each do |data| %>
-      <%= data.temperature %>°C, <%= data.air_humidity %>%, <%= data.co_level %> PPM, <%= data.created_at.strftime('%m/%d/%Y %H:%M') %>, <%= 'Yes' if data.co_alert %><br>
-    <% end %>
+    <table class="table">
+      <thead><tr>
+        <th>Temperature</th>
+        <th>Air Humidity</th>
+        <th>CO Level</th>
+        <th>Time</th>
+        <th>CO Alert?</th>
+      </tr></thead>
+      <br>
+      <% @todays_data.each do |data| %>
+        <tr class=<%= 'danger' if data.co_alert%>>
+          <td><%= data.temperature %> °C</td>
+          <td><%= data.air_humidity %>%</td>
+          <td><%= data.co_level %> PPM</td>
+          <td><%= data.created_at.strftime('%m/%d/%Y %H:%M') %></td>
+          <td><%= 'Yes' if data.co_alert %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    No sensor data available for this period.
   <% end %>
 <% else %>
-  No device given
+  No device given<br>
 <% end %>
+<%= link_to 'Back to the list of Devices', :root %><br>
+<br>
