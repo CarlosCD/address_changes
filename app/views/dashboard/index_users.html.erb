@@ -4,12 +4,14 @@
     <th>Email</th>
     <th>Last Log In</th>
     <th>Times Logged In</th>
+    <th>Action</th>
   </tr></thead>
   <% @users.each do |user| %>
-    <tr>
+    <tr class=<%= 'danger' unless user.enabled%>>
       <td><%= user.email %></td>
       <td><%= user.updated_at %></td>
       <td><%= user.sign_in_count %></td>
+      <td><%= link_to("#{user.enabled ? 'Block' : 'Unblock'} user", toggle_user_login_path(user.id)) if user != current_user %></td>
     </tr>
   <% end %>
 </table>

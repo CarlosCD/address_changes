@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   get 'dashboard/users' => 'dashboard#index_users'
+  get 'dashboard/toggle_user_login/:user_id' => 'dashboard#toggle_user_login', as: :toggle_user_login
 
   get 'dashboard/devices' => 'dashboard#index_devices'
   get 'dashboard/device/:id' => 'dashboard#show_device', as: :dashboard_device

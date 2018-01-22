@@ -29,4 +29,12 @@ class DashboardController < ApplicationController
     @users = User.order(:email)
   end
 
+  def toggle_user_login
+    user = User.where(id: params[:user_id]).first
+    if user
+      user.update_columns(enabled: !user.enabled)
+      redirect_to :back
+    end
+  end
+
 end

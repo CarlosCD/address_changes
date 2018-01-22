@@ -4,6 +4,7 @@ Devices and Sensors Exercise
 Rails application.
 
 Ruby 2.4.0
+PostgreSQL (tested with PostgreSQL 9.6.1.1)
 
 Some seed data has been added (see `db/seeds.rb`)
 
