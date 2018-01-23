@@ -60,6 +60,20 @@ Rails.application.configure do
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
 
+  config.action_mailer.default_url_options = { host: 'blooming-sierra-75455.herokuapp.com', protocol: :https }
+
+  # SendGrid free account configuration:
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      address:              'smtp.sendgrid.net',
+      port:                 587,
+      domain:               'herokuapp.com',
+      user_name:            ENV['SMTP_USER'],
+      password:             ENV['SMTP_PASS'],
+      authentication:       'plain',
+      enable_starttls_auto: true 
+  }
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false

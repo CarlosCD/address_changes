@@ -1,12 +1,15 @@
 Devices and Sensors Exercise
 ============================
 
-Rails application.
-
-Ruby 2.4.0
-PostgreSQL (tested with PostgreSQL 9.6.1.1)
+- Rails application.
+- Ruby 2.4.0
+- PostgreSQL (tested with PostgreSQL 9.6.1.1)
 
 Some seed data has been added (see `db/seeds.rb`)
+
+A test of this application is running in [Heroku](https://blooming-sierra-75455.herokuapp.com/) (production environment),
+
+### REST API
 
 The REST API has one entry point at `/api/v1/notify`, and it can be tested with CURL. For example if there is a device with serial number `123456789012`, an example it could be:
 

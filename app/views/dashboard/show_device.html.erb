@@ -21,22 +21,29 @@
   </div>
   <br>
   <% if @todays_data.any? %>
+    <% has_alerts = @todays_data.where(co_alert: true).count > 0 %>
     <table class="table">
       <thead><tr>
         <th>Temperature</th>
         <th>Air Humidity</th>
         <th>CO Level</th>
+        <th>Device's Health</th>
         <th>Time</th>
-        <th>CO Alert?</th>
+        <% if has_alerts %>
+          <th>CO Alert?</th>
+        <% end %>
       </tr></thead>
       <br>
       <% @todays_data.each do |data| %>
-        <tr class=<%= 'danger' if data.co_alert%>>
+        <tr class=<%= 'danger' if data.co_alert %>>
           <td><%= data.temperature %> °C</td>
           <td><%= data.air_humidity %>%</td>
           <td><%= data.co_level %> PPM</td>
+          <td><%= data.device_health %></td>
           <td><%= data.created_at.strftime('%m/%d/%Y %H:%M') %></td>
-          <td><%= link_to('Hide Alert', remove_alert_path(data.id)) if data.co_alert %></td>
+          <% if has_alerts && data.co_alert %>
+            <td><%= link_to('Hide Alert', remove_alert_path(data.id)) %></td>
+          <% end %>
         </tr>
       <% end %>
     </table>

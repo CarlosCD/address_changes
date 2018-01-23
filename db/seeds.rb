@@ -21,8 +21,7 @@ end
 #  - Password minimum length is 8 charactes (see config/initializers/devise.rb)
 #  - Do not use in production, and use better passwords :)
 
-User.create(email: 'ccarrodupla@gmail.com',   password: 'password')
-User.create(email: 'lucas@citrusbyte.com',    password: 'password')
-User.create(email: 'federico@citrusbyte.com', password: 'password')
-User.create(email: 'lautaro@citrusbyte.com',  password: 'password')
 User.create(email: 'test@example.com',        password: 'password')
+User.create(email: 'test1@example.com',        password: 'password')
+User.create(email: 'test2@example.com',        password: 'password')
+User.create(email: 'test3@example.com',        password: 'password')
