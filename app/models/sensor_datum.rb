@@ -8,6 +8,7 @@ class SensorDatum < ActiveRecord::Base
   # Validations
   validates :temperature, :co_level, :air_humidity, :device_health, presence: true
   validates :co_level, :air_humidity, numericality: { greater_than_or_equal_to: 0 }
+  validates :device_health, length: { maximum: 150 }
 
   before_create :set_co_alert, if: ->(data) { data.co_level > 9 }
 
