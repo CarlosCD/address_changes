@@ -41,13 +41,14 @@ class ApiController < ApplicationController
           # puts"ERROR: #{e}"
           # puts '------------------'
           # puts
+          next
         end
       end
       if num_added > 0
         render json: {message: "Added #{ActionController::Base.helpers.pluralize(num_added, 'sensor data point')} for device #{device.serial_number}"},
                status: :ok
       else
-        render json: {message: 'Not valid data received'}, status: 422
+        render json: {message: 'No valid data received'}, status: 422
       end
     else
       render json: {message: 'Data missing'}, status: 422
