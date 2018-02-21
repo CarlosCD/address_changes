@@ -1,0 +1,22 @@
+<h1>List of IP Address alerts received</h1>
+<% if @ip_addresses && @ip_addresses.any? %>
+  Alerts <span class="text-danger">in red</span> have sent an email.<br>
+  <table class="table">
+    <thead><tr>
+      <th>IP Address</th>
+      <th>Times Received</th>
+      <th>Last Update</th>
+      <th>First Update</th>
+    </tr></thead>
+    <% @ip_addresses.each do |address| %>
+      <tr class=<%= 'danger' if address.email_sent == true %>>
+        <td><%= address.ip_address %></td>
+        <td><%= address.times_received %></td>
+        <td><%= address.updated_at %></td>
+        <td><%= address.created_at %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <strong>No ip addresses registered</strong>
+<% end %>

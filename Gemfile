@@ -1,7 +1,11 @@
 source 'https://rubygems.org'
 
-ruby '2.4.0'   # Used by Heroku (and the last version of RVM)
-# For the local RVM gemset, see .ruby-gemset. Add the file to .gitignore, if so decided.
+# Used by Heroku (and by the last version of RVM -master, unreleased):
+ruby '2.4.3'
+
+# For RVM to set the ruby version and gemset:
+#ruby=ruby-2.4.3
+#ruby-gemset=general
 
 gem 'rails', '4.2.10'
 

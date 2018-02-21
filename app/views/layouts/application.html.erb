@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sensors</title>
+  <title>IP Address Changes</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +20,7 @@
       </div>
       <div class="collapse navbar-collapse" id="menu_navbar_collapse">
         <ul class="nav navbar-nav">
-          <li class="navbar_home<%= ' active' if @device || @devices %>"><a href="/">Devices</a></li>
+          <li class="navbar_home<%= ' active' if @ip_addresses %>"><a href="/">IP Addresses Received</a></li>
           <li class="<%= 'active' if @users %>">
             <a href="/dashboard/users">Users</a>
           </li>

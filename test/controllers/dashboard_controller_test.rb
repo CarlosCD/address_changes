@@ -7,18 +7,13 @@ class DashboardControllerTest < ActionController::TestCase
     sign_in User.all.sample
   end
 
-  test 'should get dashboard index' do
-    get :index_devices
+  test 'should get dashboard ip addresses index' do
+    get :index_addresses
     assert_response :success
   end
 
-  test 'should get dashboard show device by id' do
-    get :show_device, id: Device.all.sample.id
-    assert_response :success
-  end
-
-  test 'should get dashboard show devices by serial number' do
-    get :show_device, serial: Device.all.sample.serial_number
+  test 'should get dashboard users index' do
+    get :index_users
     assert_response :success
   end
 

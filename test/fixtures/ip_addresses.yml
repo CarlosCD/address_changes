@@ -1,0 +1,7 @@
+one:
+  ip_address: '123.234.156.227'
+  email_sent: true
+
+two:
+  ip_address: '100.24.156.227'
+  email_sent: false
