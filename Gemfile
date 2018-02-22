@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-# Used by Heroku (and by the last version of RVM -master, unreleased):
+# Directive used by Heroku
+#   (and the last version of RVM -master, unreleased):
 ruby '2.4.3'
 
 # For RVM to set the ruby version and gemset:
@@ -34,4 +35,3 @@ group :development, :test do
   gem 'guard-minitest', '2.4.4'
   gem 'minitest-growl', '0.0.3'
 end
-

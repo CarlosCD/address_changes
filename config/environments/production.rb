@@ -60,7 +60,7 @@ Rails.application.configure do
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
 
-  config.action_mailer.default_url_options = { host: 'blooming-sierra-75455.herokuapp.com', protocol: :https }
+  config.action_mailer.default_url_options = { host: 'fathomless-meadow-83773.herokuapp.com', protocol: :https }
 
   # SendGrid free account configuration:
   config.action_mailer.delivery_method = :smtp

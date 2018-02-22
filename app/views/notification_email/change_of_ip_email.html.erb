@@ -1,11 +1,13 @@
 Hey!<br>
 <br>
-The IP address has changed to: <strong>'<%= @new_ip_address %>'</strong><br>
 <% if @previous_address %>
+The IP address has changed to: <strong>'<%= @new_ip_address %>'</strong><br>
   <br>
   The previous one was '<%= @previous_address %>'<br>
+<% else %>
+The IP address is: <strong>'<%= @new_ip_address %>'</strong><br>
 <% end %>
 <br>
-For more details, go to <a href="https://fathomless-meadow-83773.herokuapp.com/">the heroku app</a><br>
+For more details, go to the web app at <a href="<%= root_url %>"><%= Rails.application.config.action_mailer.default_url_options[:host] %></a><%= " [#{Rails.application.config.action_mailer.default_url_options[:protocol]}]" if Rails.application.config.action_mailer.default_url_options[:protocol]%>.<br>
 <br>
 Cheers<br>
